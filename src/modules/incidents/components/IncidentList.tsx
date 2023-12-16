@@ -41,7 +41,7 @@ function IncidentList() {
         <div>
             <div className="mb-8 flex justify-between">
                 <div className="text-lg font-bold">Инциденты</div>
-                <Button icon={PlusIcon} onClick={() => {setModalShown(true)}}>Добавить инцидент</Button>
+                {(userRole == 2) && <Button icon={PlusIcon} onClick={() => {setModalShown(true)}}>Добавить инцидент</Button>}
             </div>
             <div className="grid grid-cols-3 gap-8">
                 {incidents.map((el, i) => {
