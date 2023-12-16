@@ -2,12 +2,12 @@ import axios, {AxiosResponse} from 'axios';
 import {AuthResponse} from "../models/AuthResponse";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL + "api/v1";
-const $api = axios.create({
-    withCredentials: true,
-    baseURL: API_URL,
-})
+
+const $api = axios.create();
 
 $api.interceptors.request.use((config) => {
+    config.baseURL = API_URL;
+    config.withCredentials = true;
     config.headers.Authorization = `Bearer ${localStorage.getItem("access_token")}`;
     return config;
 })
